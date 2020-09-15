@@ -1,12 +1,12 @@
-#'@name datalist
-#'@title datalist
+#'@name datalistInput
+#'@title datalistInput
 #'@description Creates an autocomplete input
 #'@param inputId Input id
 #'@param datalistId Datalist id
 #'@param label Input label
 #'@param options Vector of autocomplete options
 #'@export
-datalist <- function(inputId, datalistId, label, options = c()) {
+datalistInput <- function(inputId, datalistId, label, options = c()) {
   addResourcePath(prefix = "lib", directoryPath = system.file("lib", package = "rdatalist"))
   tagList(
     singleton(tags$head(
@@ -20,4 +20,13 @@ datalist <- function(inputId, datalistId, label, options = c()) {
         tags$datalist(id=datalistId)
     )
   )
+}
+
+#' @name updateDatalistInput
+#' @title updateDatalistInput
+#' @description Update datalist input options
+#' @export
+updateDatalistInput <- function(session, inputId, options=c()) {
+  message <- list(options=options)
+  session$sendInputMessage(inputId, message)
 }

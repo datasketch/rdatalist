@@ -6,7 +6,7 @@ library(dplyr)
 ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
-      datalist(inputId = "iris",
+      datalistInput(inputId = "iris",
                datalistId = "species",
                label = "Select a specie",
                options = as.vector(unique(iris$Species))),

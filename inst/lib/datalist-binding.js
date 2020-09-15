@@ -24,6 +24,9 @@ Object.assign(datalistBinding, {
       callback();
     });
   },
+  receiveMessage(el, message) {
+    this._fillDatalist(el, message.options);
+  },
   _fillDatalist(el, options) {
     const datalist = el.querySelector('datalist');
     const opts = this._createOptions(options);
