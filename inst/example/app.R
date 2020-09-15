@@ -21,7 +21,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   dataInput <- reactive({
     species <- as.vector(unique(iris$Species))
-    if (is.null(input$iris) || !(input$iris %in% species)) {
+    if (!(input$iris %in% species)) {
       data <- iris
     } else {
       data <- iris %>% filter(Species %in% input$iris)

@@ -12,13 +12,12 @@ datalist <- function(inputId, datalistId, label, options = c()) {
     singleton(tags$head(
       tags$script(src="lib/datalist-binding.js")
     )),
-    div(id=inputId, class="form-group datalist",
+    div(id=inputId,
+        class="form-group datalist",
+        `data-options`=jsonlite::toJSON(options),
         tags$label(label),
         tags$input(class="form-control", type="text", list=datalistId),
-        tags$datalist(id=datalistId,
-          lapply(options, function(option) {
-            tags$option(value=option)
-          }))
-        )
+        tags$datalist(id=datalistId)
+    )
   )
 }
